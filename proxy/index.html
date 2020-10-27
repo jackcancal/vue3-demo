@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<button id="btn">点击</button>
+<script src="./vue3.js"></script>
+<script>
+  const root = document.getElementById('app')
+
+  const obj = reactive({
+    name: 'zy',
+    age: 1
+  })
+  let double = computed(()=>obj.age*2)
+
+  effect(()=>{
+    //  数据变化
+    root.innerHTML = `<h1>${obj.name}--${obj.age}--${double.value}</h1>`
+  })
+  document.getElementById('btn').addEventListener('click',function () {
+    obj.age++
+  })
+</script>
+</body>
+</html>
